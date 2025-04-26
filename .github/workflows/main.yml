@@ -29,6 +29,8 @@ jobs:
           context: .
           file: Dockerfile
           tags: kr-dev:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Lint Verilog
         run: |
