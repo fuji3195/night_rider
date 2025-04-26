@@ -30,7 +30,9 @@ jobs:
         with:
           context: .
           file: Dockerfile
+          provenance: false
           tags: kr-dev:ci
+          load: true
       - name: Lint
         run: docker run --rm kr-dev:ci verible-verilog-lint src/*.v
   simulate:
@@ -52,6 +54,7 @@ jobs:
           file: Dockerfile
           provenance: false
           tags: kr-dev:ci
+          load: true
 
       - name: Run unit tests
         run: |
