@@ -19,7 +19,6 @@ on:
       - .github/workflows/**
 
 jobs:
-
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -35,6 +34,7 @@ jobs:
           load: true
       - name: Lint
         run: docker run --rm kr-dev:ci verible-verilog-lint src/*.v
+
   simulate:
     runs-on: ubuntu-latest
     needs: lint
