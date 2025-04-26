@@ -1,0 +1,39 @@
+name: Verilog Simulation CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/**
+      - tb/**
+      - .github/workflows/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src/**
+      - tb/**
+      - .github/workflows/**
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker Image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile
+          tags: kr-dev:ci
+
+      - name: Lint Verilog
+        run: |
+          docker run --rm kr-dev:ci verible-verilog-lint src/*.v
+
+      - name: Run unit tests
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/project kr-dev:ci make sim
