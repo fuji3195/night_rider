@@ -19,8 +19,23 @@ on:
       - .github/workflows/**
 
 jobs:
-  build-and-test:
+
+  lint:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docer/setup-buildx-action@v3
+      - name: build image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile
+          tags: kr-dev:ci
+      - name: Lint
+        run: docker run --rm kr-dev:ci verible-verilog-lint src/*.v
+  simulate:
+    runs-on: ubuntu-latest
+    needs: lint
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -37,10 +52,6 @@ jobs:
           file: Dockerfile
           provenance: false
           tags: kr-dev:ci
-
-      - name: Lint Verilog
-        run: |
-          docker run --rm kr-dev:ci verible-verilog-lint src/*.v
 
       - name: Run unit tests
         run: |
