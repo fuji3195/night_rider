@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       make gcc g++ python3 python3-pip python3-venv git \
       verilator iverilog gtkwave verible && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get clean && apt-get autoremove -y
 # create venv
 RUN python3 -m venv /opt/venv
 

@@ -9,6 +9,7 @@ on:
       - src/**
       - tb/**
       - .github/workflows/**
+      - Dockerfile
   pull_request:
     branches:
       - main
