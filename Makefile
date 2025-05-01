@@ -5,11 +5,11 @@ include $(COCOTB)
 
 EXTRA_ARGS += --trace --trace-fst --trace-structs
 
-MODULE = test
+MODULE = tb_night_rider
 
-TOPLEVEL = test
+TOPLEVEL = night_rider_fsm
 
-VERILOG_SOURCES = $(abspath src/test.v)
+VERILOG_SOURCES = $(abspath src/top.v)
 
 export PYTHONPATH := $(PWD)/tb:$(PYTHONPATH)
 
