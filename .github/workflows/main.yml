@@ -42,4 +42,4 @@ jobs:
 
       - name: Run unit tests
         run: |
-          docker run --rm -v ${{ github.workspace }}:/project kr-dev:ci make sim
+          docker run --rm -v ${{ github.workspace }}:/project -e LD_LIBRARY_PATH=/opt/venv/lib/python3.12/site-packages/cocotb/libs kr-dev:ci make sim

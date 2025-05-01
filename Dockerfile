@@ -5,7 +5,7 @@ FROM ubuntu:24.04
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
-      make gcc g++ python3 python3-pip python3-venv git \
+      make gcc g++ python3 python3-pip python3-venv python3-dev build-essential git \
       verilator iverilog gtkwave && \
     apt-get clean && apt-get autoremove -y
 # create venv
