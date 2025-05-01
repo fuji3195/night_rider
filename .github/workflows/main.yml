@@ -40,6 +40,10 @@ jobs:
           tags: kr-dev:ci
           load: true
 
+      - name: Check verilator version
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/project kr-dev:ci bash -lc "verilator --version && verilator --help | head -n 20"
+
       - name: Run unit tests
         run: |
           docker run --rm -v ${{ github.workspace }}:/project -w /project kr-dev:ci make sim
