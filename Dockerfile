@@ -18,5 +18,5 @@ ENV PATH="/opt/venv/bin:${PATH}"
 RUN pip install --upgrade pip && pip install cocotb==1.9.2
 
 # working dir
-WORKDIR /workspace
+WORKDIR /project
 CMD ["/bin/bash"]
