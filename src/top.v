@@ -8,7 +8,8 @@ module night_rider_fsm
 );
 
     localparam add_N = $clog2(N);
-    localparam [add_N-1:0] N_MINUS_2 = (N - 2)[add_N-1:0];
+    localparam integer TEMP = N - 2;
+    localparam [add_N-1:0] N_MINUS_2 = TEMP;
     localparam [1:0] LIGHT_FIRST = 2'b01,
                     LIGHT_MID = 2'b10,
                     LIGHT_LAST = 2'b11;
