@@ -39,3 +39,4 @@ venv
 *.fst
 *.vcd
 *.fsdb
+*/__pycache__
