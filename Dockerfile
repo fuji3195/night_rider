@@ -15,7 +15,7 @@ RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:${PATH}"
 
 # install cocotb to virtual env
-RUN pip install --upgrade pip && pip install cocotb==1.9.2
+RUN pip install --upgrade pip && pip install cocotb==1.9.2 pytest cocotb-test
 
 # working dir
 WORKDIR /project

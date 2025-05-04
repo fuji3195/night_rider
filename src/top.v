@@ -1,7 +1,9 @@
-module top (
+module top 
+    # (parameter N = 8)
+(
     input board_clk,
     input rst_n_btn,
-    output [7:0] led
+    output [N-1:0] led
 );
 
     wire sys_clk;
@@ -27,7 +29,7 @@ module top (
         .sync_n(rst_sync)
     );
 
-    night_rider_fsm #(.N(8)) u_night (
+    night_rider_fsm #(.N(N)) u_night (
         .clk (clk_10hz),
         .rst_n(rst_sync),
         .led_out(led)

@@ -46,4 +46,4 @@ jobs:
 
       - name: Run unit tests
         run: |
-          docker run --rm -v ${{ github.workspace }}:/project -w /project kr-dev:ci make sim
+          docker run --rm -v ${{ github.workspace }}:/project -w /project kr-dev:ci pytest -q
