@@ -8,6 +8,7 @@ on:
     paths:
       - src/**
       - tb/**
+      - tests/**
       - .github/workflows/**
       - Dockerfile
   pull_request:
@@ -17,7 +18,9 @@ on:
     paths:
       - src/**
       - tb/**
+      - tests/**
       - .github/workflows/**
+      - Dockerfile
 
 jobs:
   simulate:
